@@ -1,285 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
- <link rel="stylesheet" href="responsive2.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Coming Soon | Hacker Style</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: Consolas, monospace;
+}
+
+body{
+background:#000;
+color:#00ff66;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+/* Matrix background */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* Terminal box */
+.terminal{
+width:80%;
+max-width:800px;
+background:rgba(0,0,0,.85);
+border:2px solid #00ff66;
+padding:35px;
+box-shadow:0 0 25px #00ff66;
+}
 
 
+.dot{
+width:12px;
+height:12px;
+border-radius:50%;
+}
+
+.red{background:#ff4444;}
+.yellow{background:#ffcc00;}
+.green{background:#00ff66;}
+
+.line{
+margin:12px 0;
+font-size:20px;
+white-space:nowrap;
+overflow:hidden;
+border-right:2px solid #00ff66;
+animation:typing 4s steps(40,end), blink .8s infinite;
+}
+
+@keyframes typing{
+from{width:0}
+to{width:100%}
+}
+
+@keyframes blink{
+50%{border-color:transparent;}
+}
+
+.glitch{
+font-size:45px;
+font-weight:bold;
+text-shadow:
+2px 0 red,
+-2px 0 cyan;
+margin:20px 0;
+animation:flicker .2s infinite alternate;
+}
+
+@keyframes flicker{
+from{opacity:1;}
+to{opacity:.8;}
+}
+
+.countdown{
+font-size:28px;
+margin:25px 0;
+}
+
+.progress-box{
+border:1px solid #00ff66;
+height:28px;
+margin-top:15px;
+}
+
+.progress{
+height:100%;
+width:72%;
+background:#00ff66;
+color:#000;
+font-weight:bold;
+text-align:center;
+line-height:28px;
+}
+
+.footer{
+margin-top:30px;
+font-size:18px;
+opacity:.8;
+}
+
+.blinking{
+animation:blink 1s infinite;
+}
+</style>
 </head>
 <body>
-  <!-- Header -->
-    <nav id="navbar">
-        <div class="container">
-            <a href="#" class="logo"><i class="fas fa-palette"></i>StylishPrabesh</a>
 
-            <ul class="nav-links" id="mynav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html">Work</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+<canvas id="matrix"></canvas>
 
-            <!-- Weather Widgets-->
-            <div id="weather">
-                <h5 id="city-name"></h5>
-                <h6> <p id="weather-main"></p></h6>
-            </div>
+<div class="terminal">
+<div class="topbar">
+<div class="dot red"></div>
+<div class="dot yellow"></div>
+<div class="dot green"></div>
+</div>
 
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
+<div class="line">root@server:~ initializing project...</div>
 
-  
-   <!-- Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>About Me</h2>
-                <p>Get to know me better</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>I'm a Passionate Designer & Developer</h3>
-                    <p>With a background in both design and development, I create digital solutions that not only look beautiful but also function flawlessly. I believe in the power of design to solve problems and create meaningful experiences.</p>
-                    <p>My approach combines creative thinking with technical expertise to deliver projects that exceed expectations. I stay updated with the latest industry trends and technologies to ensure my work is always cutting-edge.</p>
-                    
-                    <div class="info">
-                        <p><strong>Name:</strong> Prabesh</p>
-                        <p><strong>Email:</strong> stylishprabesh@gmail.com</p>
-                        <p><strong>From:</strong> Nepal</p>
-                        <p><strong> Number:</strong>+977 9863732054</p>
-                    </div>
-                    
-                    <a href="#" class="btn">Download CV</a>
-                </div>
-                
-                <div class="skills">
-                    <div class="skill">
-                        <h4>UI/UX Design <span>95%</span></h4>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <h4>Web Development <span>90%</span></h4>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <h4>Graphic Design <span>85%</span></h4>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <h4>Brand Identity <span>80%</span></h4>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <h4>Mobile Design <span>75%</span></h4>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 75%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<h1 class="glitch">ACCESS DENIED</h1>
 
+<div class="line">
+Project Launch In Progress...
+</div>
 
- 
+<div class="countdown">
+⏳ Launching Soon: 27 DAYS
+</div>
 
- 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h3>Portfolio</h3>
-                    <p>A modern portfolio showcasing my design and development work. Creating digital experiences that make an impact.</p>
-                    <div class="social-icons">
-                              <a href="https://www.facebook.com/stylishprabesh1"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="https://www.instagram.com/stylishprabesh"><i class="fab fa-instagram"></i></a>
-                                    <a href="https://www.linkdin.com/prabesh"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="https://github.com/stylishprabesh"><i class="fab fa-github"></i></a>
-                                    <a href="https://x.com/stylishprabesh"><i class="fa-brands fa-x-twitter"></i></a>
-                    </div>
-                </div>
-                 <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html">Work</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Web Design</a></li>
-                        <li><a href="#">App Design</a></li>
-                        <li><a href="#">UI/UX Design</a></li>
-                        <li><a href="#">Graphic Design</a></li>
-                        <li><a href="#">Brand Identity</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe to receive updates and design insights.</p>
-                    <form>
-                        <input type="email" placeholder="Your Email" required>
-                        <button type="submit" class="btn">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 My Portfolio. All rights reserved. Designed with <i class="fas fa-heart"></i></p>
-            </div>
-        </div>
-    </footer>
-    <script>
-        
-        // Hero Slider Functionality
-        const slides = document.querySelector('.slides');
-        const dots = document.querySelectorAll('.slider-dot');
-        const prevBtn = document.querySelector('.prev');
-        const nextBtn = document.querySelector('.next');
-        let slideIndex = 0;
-        let slideInterval;
-        
-        // Initialize slider
-        function initSlider() {
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-        
-        // Next slide
-        function nextSlide() {
-            slideIndex = (slideIndex + 1) % 3;
-            updateSlider();
-        }
-        
-        // Previous slide
-        function prevSlide() {
-            slideIndex = (slideIndex - 1 + 3) % 3;
-            updateSlider();
-        }
-        
-        // Update slider position and active dot
-        function updateSlider() {
-            slides.style.transform = `translateX(-${slideIndex * 25}%)`;
-            
-            // Update active dot
-            dots.forEach((dot, index) => {
-                if (index === slideIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-            
-            // Reset timer
-            clearInterval(slideInterval);
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-        
-        // Dot click event
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                slideIndex = index;
-                updateSlider();
-            });
-        });
-        
-        // Navigation buttons
-        prevBtn.addEventListener('click', prevSlide);
-        nextBtn.addEventListener('click', nextSlide);
-        
-        // Initialize slider on page load
-        document.addEventListener('DOMContentLoaded', initSlider);
-        
-        // Mobile Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-        
-        // Portfolio filtering
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                btn.classList.add('active');
-                // Filter logic would go here in a real implementation
-            });
-        });
+<div class="progress-box">
+<div class="progress">
+72% COMPLETE
+</div>
+</div>
 
-  const apiKey = "6d3fc6fb8152921219e3399d7ae0729b"; // Replace with your OpenWeather API key
-  const city = "Kathmandu";
+<div class="footer">
+> system_status:
+<br>
+> website_deployment.exe running...
+<br>
+> stay_tuned<span class="blinking">_</span>
+</div>
+</div>
 
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById("city-name").textContent = `Weather in ${data.name}`;
-      document.getElementById("weather-main").textContent = `${data.weather[0].main} - ${data.weather[0].description}`;
-      document.getElementById("weather-temp").textContent = `🌡️ Temp: ${data.main.temp}°C`;
-      document.getElementById("weather-wind").textContent = `💨 Wind: ${data.wind.speed} m/s`;
-    })
-    .catch(error => {
-      console.error("Weather fetch error:", error);
-    });
+<script>
+// Matrix Effect
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
 
-    
+canvas.height=window.innerHeight;
+canvas.width=window.innerWidth;
 
+let letters="01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+letters=letters.split("");
 
-    </script>
+let fontSize=16;
+let columns=canvas.width/fontSize;
+let drops=[];
+
+for(let i=0;i<columns;i++){
+drops[i]=1;
+}
+
+function draw(){
+ctx.fillStyle="rgba(0,0,0,.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00ff66";
+ctx.font=fontSize+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+let text=letters[Math.floor(Math.random()*letters.length)];
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975){
+drops[i]=0;
+}
+drops[i]++;
+}
+}
+
+setInterval(draw,35);
+</script>
 
 </body>
 </html>
